@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Near - Iniciar sesión</title>
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 login-container">
+                <img src="./assets/img/banner-near.png" alt="Near Logo" class="img-fluid brand-image">
+                <h2>Near - Iniciar sesión</h2>
+                <form action="login.php" method="post">
+                    <div class="form-group">
+                        <label for="username">Usuario:</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega el script de Bootstrap (jQuery y Popper.js deben estar incluidos antes) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
