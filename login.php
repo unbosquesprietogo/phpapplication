@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Autenticación exitosa
                     $_SESSION["username"] = $username;
                     echo "Autenticación exitosa. Redirigiendo a la página principal...";
-                    header("Location: principal.php");
+                    header("Location: index.html");
                 } else {
                     // Autenticación fallida
                     echo "Autenticación fallida. Verifica tu nombre de usuario y contraseña.";

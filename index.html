@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Near - Nuevo Recaudo</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/styles/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 login-container">
+                <img src="./assets/img/banner-near.png" alt="Near Logo" class="img-fluid brand-image">
+                <h2>Near - Nuevo Recaudo</h2>
+                <form action="formRecaudo.php" method="post">
+                    <div class="form-group">
+                        <label for="idcliente">ID Cliente:</label>
+                        <input type="number" id="idcliente" name="idcliente" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="idfactura">ID Factura:</label>
+                        <input type="number" id="idfactura" name="idfactura" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valorecaudo">Valor del Recaudo:</label>
+                        <input type="number" id="valorecaudo" name="valorecaudo" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recaudoDate">Fecha del Recaudo:</label>
+                        <input type="date" id="recaudoDate" name="recaudoDate" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Bootstrap (jQuery y Popper.js deben estar incluidos antes) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
