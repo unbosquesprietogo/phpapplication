@@ -4,7 +4,7 @@ echo "<script>";
 echo "console.log('hola');";
 echo "</script>";
 
-$wsdlUrl = 'http://localhost/phpapplication/serviceSOAP.php?wsdl';
+$wsdlUrl = 'http://localhost/phpapplication/wsdl/recaudo.wsdl';
 echo "<script>";
 echo "console.log('wsdl');";
 echo "</script>";
