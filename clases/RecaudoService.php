@@ -13,6 +13,11 @@ class RecaudoService
         }
     }
 
+    public function prepararConsulta($sql)
+    {
+        return $this->conexion->prepare($sql);
+    }
+
     public function insertarRecaudo($idCliente, $idFactura, $valorRecaudo, $recaudoFecha)
     {
         $consulta = $this->conexion->prepare("INSERT INTO RECAUDO (ID_CLIENTE_RECAUDO, ID_FACTURA_RECAUDO, VALOR_RECAUDO, FECHA_RECAUDO) VALUES (?, ?, ?, ?)");

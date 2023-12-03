@@ -26,6 +26,7 @@ try {
     echo "<script>";
     echo "console.log('try');";
     echo "</script>";
+    $resultado = $response->RecaudoResponse->resultado;
     $response = $soapClient->obtenerRecaudosPendientes();
     print_r($response);
 } catch (SoapFault $e) {

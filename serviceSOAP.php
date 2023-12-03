@@ -1,48 +1,49 @@
 <?php
 
-require_once 'clases/RecaudoService.php';
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+    require_once 'clases/RecaudoService.php';
 
     class serviceSOAP {
-
         private $conexion;
 
-        public function obtenerRecaudosPendientes()
+        public function __construct()
         {
+            // Configuración de la conexión a la base de datos
             $host = "localhost";
             $usuario = "root";
             $contrasena = "12345678";
             $base_de_datos = "neardb";
 
-            // Corregir la referencia a la propiedad
+            // Crear una instancia de RecaudoService
             $this->conexion = new RecaudoService($host, $usuario, $contrasena, $base_de_datos);
+        }
 
-            $consulta = $this->conexion->prepare("SELECT * FROM RECAUDO WHERE ESTADO_RECAUDO = 'Cancelado' AND ESTADO_ENVIO = 'Falso'");
-
+        public function obtenerRecaudosPendientes()
+        {
+            // Ahora puedes usar $this->conexion para preparar y ejecutar la consulta
+            $consulta = $this->conexion->prepararConsulta("SELECT * FROM RECAUDO WHERE ESTADO_RECAUDO = 'Cancelado' AND ESTADO_ENVIO = 'Falso'");
             $consulta->execute();
-
             $result = $consulta->get_result();
-
+        
             $recaudos = array();
-
+        
             while ($row = $result->fetch_assoc()) {
                 $recaudos[] = $row;
             }
-
+        
             $consulta->close();
-
+        
             // Cerrar la conexión después de obtener los resultados
             $this->conexion->cerrarConexion();
-
-            return $recaudos;
-        }
+        
+            return (object) ['resultado' => $recaudos];
+        }   
 
         public function cerrarConexion()
         {
             $this->conexion->cerrarConexion();
         }
     }
+
 
 
     
