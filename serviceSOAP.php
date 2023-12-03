@@ -1,39 +1,59 @@
 <?php
+
+require_once 'clases/RecaudoService.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-    class servicioSOAP{
-        
+    class serviceSOAP {
+
+        private $conexion;
+
         public function obtenerRecaudosPendientes()
         {
-            console.log("obtener recaudos");
+            $host = "localhost";
+            $usuario = "root";
+            $contrasena = "12345678";
+            $base_de_datos = "neardb";
+
+            // Corregir la referencia a la propiedad
+            $this->conexion = new RecaudoService($host, $usuario, $contrasena, $base_de_datos);
+
             $consulta = $this->conexion->prepare("SELECT * FROM RECAUDO WHERE ESTADO_RECAUDO = 'Cancelado' AND ESTADO_ENVIO = 'Falso'");
-            console.log("preparacion lista");    
+
             $consulta->execute();
-            console.log("Consulta lista");
+
             $result = $consulta->get_result();
-            console.log("Resultado: " + get_result());
+
             $recaudos = array();
-            console.log("Recaudos" + array());
+
             while ($row = $result->fetch_assoc()) {
-                    $recaudos[] = $row;
+                $recaudos[] = $row;
             }
 
             $consulta->close();
 
-            return $recaudos;
+            // Cerrar la conexión después de obtener los resultados
+            $this->conexion->cerrarConexion();
 
-            console.log("Paso");
+            return $recaudos;
         }
 
         public function cerrarConexion()
         {
-                $this->conexion->close();
+            $this->conexion->cerrarConexion();
         }
     }
+
+
     
         // Crear el servidor SOAP
-        $server = new SoapServer(null, array('uri' => 'http://localhost/phpapplication/serviceSOAP.php'));
-        $server->setClass('obtenerRecaudosPendientes');
+        $wsdlConfig = array(
+            'uri' => 'http://localhost/phpapplication/serviceSOAP.php',
+            'encoding' => 'UTF-8',
+            'soap_version' => SOAP_1_2,
+        );
+        $wsdlFile =  'wsdl/recaudo.wsdl';
+        $server = new SoapServer($wsdlFile, $wsdlConfig);
+        $server->setClass('serviceSOAP');
         $server->handle();
 ?>
