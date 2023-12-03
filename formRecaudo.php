@@ -3,7 +3,7 @@ require_once 'clases/RecaudoService.php';
 
 $host = "localhost";
 $usuario = "root";
-$contrasena = "1000150611";
+$contrasena = "12345678";
 $base_de_datos = "database";
 
 $recaudoService = new RecaudoService($host, $usuario, $contrasena, $base_de_datos);
